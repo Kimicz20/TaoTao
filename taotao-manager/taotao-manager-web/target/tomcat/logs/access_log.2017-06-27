@@ -1,8 +1,0 @@
-0:0:0:0:0:0:0:1 - - [27/Jun/2017:21:24:27 +0800] "GET / HTTP/1.1" 200 2475 http-bio-8088-exec-1 821
-0:0:0:0:0:0:0:1 - - [27/Jun/2017:21:24:29 +0800] "GET /item-add?_=1498569867082 HTTP/1.1" 200 4608 http-bio-8088-exec-7 88
-0:0:0:0:0:0:0:1 - - [27/Jun/2017:21:24:29 +0800] "GET /js/kindeditor-4.1.10/kindeditor-all-min.js?_=1498569867083 HTTP/1.1" 200 179915 http-bio-8088-exec-8 9
-0:0:0:0:0:0:0:1 - - [27/Jun/2017:21:24:29 +0800] "GET /js/kindeditor-4.1.10/lang/zh_CN.js?_=1498569867084 HTTP/1.1" 200 8488 http-bio-8088-exec-9 5
-0:0:0:0:0:0:0:1 - - [27/Jun/2017:21:24:31 +0800] "GET /js/kindeditor-4.1.10/plugins/multiimage/images/swfupload.swf?preventswfcaching=1498569871030 HTTP/1.1" 200 12787 http-bio-8088-exec-10 6
-0:0:0:0:0:0:0:1 - - [27/Jun/2017:21:24:41 +0800] "POST /pic/upload?dir=image HTTP/1.1" 200 76 http-bio-8088-exec-10 242
-0:0:0:0:0:0:0:1 - - [27/Jun/2017:21:24:41 +0800] "GET /home/ftpuser/www/images/2017/06/27/1498569881563102.png HTTP/1.1" 404 949 http-bio-8088-exec-10 4
-0:0:0:0:0:0:0:1 - - [27/Jun/2017:21:25:03 +0800] "GET /home/ftpuser/www/images/2017/06/27/1498569881563102.png HTTP/1.1" 404 949 http-bio-8088-exec-8 2
