@@ -61,7 +61,7 @@ public class PictureServiceImpl implements PictureService {
                 reslutMap.put("message","图片上传是失败！");
             }else{
                 reslutMap.put("error",0);
-                reslutMap.put("url",PIC_FTP_BASEPATH+filePath+"/"+newName);
+                reslutMap.put("url",PIC_FTP_REAL_PATH+filePath+"/"+newName);
             }
         } catch (IOException e) {
             reslutMap.put("error",1);
