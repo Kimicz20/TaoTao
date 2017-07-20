@@ -6,16 +6,11 @@ import com.taotao.portal.pojo.ADItem;
 import com.taotao.portal.service.ContentService;
 import com.taotao.utils.HttpClientUtil;
 import com.taotao.utils.JsonUtils;
-import org.apache.http.impl.client.CloseableHttpClient;
-import org.apache.http.impl.client.HttpClientBuilder;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
-import sun.net.www.http.HttpClient;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
  * Created by geek on 2017/6/29.
@@ -44,7 +39,7 @@ public class ContentServiceImpl implements ContentService {
             for(TbContent tbContent:list){
                 ADItem ad = new ADItem();
                 ad.setHeight(240);
-                ad.setWidth(670);
+                ad.setWidth(800);
                 ad.setSrc(tbContent.getPic());
                 ad.setHeightB(240);
                 ad.setWidth(550);

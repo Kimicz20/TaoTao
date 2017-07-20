@@ -5,4 +5,6 @@ com\taotao\service\impl\PictureServiceImpl.class
 com\taotao\service\ContentCategoryService.class
 com\taotao\service\PictureService.class
 com\taotao\service\impl\ContentCategoryServiceImpl.class
+com\taotao\service\ContentService.class
+com\taotao\service\impl\ContentServiceImpl.class
 com\taotao\service\impl\ItemCatServiceImpl.class

@@ -1,7 +1,7 @@
 <component name="libraryTable">
   <library name="Maven: org.mybatis:mybatis-spring:1.2.2">
     <CLASSES>
-      <root url="jar://$MAVEN_REPOSITORY$/org/mybatis/myBatis-spring/1.2.2/mybatis-spring-1.2.2.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/mybatis/mybatis-spring/1.2.2/mybatis-spring-1.2.2.jar!/" />
     </CLASSES>
     <JAVADOC>
       <root url="jar://$MAVEN_REPOSITORY$/org/mybatis/mybatis-spring/1.2.2/mybatis-spring-1.2.2-javadoc.jar!/" />

@@ -4,11 +4,15 @@ import com.taotao.mapper.TbItemCatMapper;
 import com.taotao.pojo.TbItemCat;
 import com.taotao.pojo.TbItemCatExample;
 import com.taotao.pojo.TbItemCatExample.Criteria;
+import com.taotao.rest.dao.JedisClient;
 import com.taotao.rest.pojo.ItemCatNode;
 import com.taotao.rest.pojo.ItemCatsResult;
 import com.taotao.rest.service.ItemCatService;
+import com.taotao.utils.JsonUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,11 +26,40 @@ public class ItemCatServiceImpl implements ItemCatService {
     @Autowired
     private TbItemCatMapper itemCatMapper;
 
+    @Autowired
+    private JedisClient jedis;
+
+    @Value("${REDIS_CAT_KEY}")
+    private String REDIS_CAT_KEY;
+
     @Override
     public ItemCatsResult getItemCatList() {
 
         ItemCatsResult result = new ItemCatsResult();
-        result.setData(getCatList(0));
+        List contents = null;
+        //1.在缓存中查询
+        try {
+            String resultStr = jedis.hget(REDIS_CAT_KEY,"0");
+            if(!StringUtils.isEmpty(resultStr)){
+                //存在缓存中，字符串解析为list返回
+                 contents = JsonUtils.jsonToList(resultStr,ItemCatNode.class);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        //2.数据库中查找
+        if(contents == null){
+            contents = getCatList(0);
+            //3.存入redis缓存中
+            String redisStr = JsonUtils.objectToJson(contents);
+            try {
+                jedis.hset(REDIS_CAT_KEY,"0",redisStr);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        result.setData(contents);
         return result;
     }
 
@@ -36,6 +69,7 @@ public class ItemCatServiceImpl implements ItemCatService {
      * @return
      */
     private List getCatList(long id){
+
         //数据库查找
         TbItemCatExample example = new TbItemCatExample();
         Criteria criteria = example.createCriteria();

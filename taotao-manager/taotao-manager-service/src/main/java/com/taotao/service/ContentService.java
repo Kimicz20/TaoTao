@@ -16,4 +16,6 @@ public interface ContentService {
     TaotaoResult editContent(TbContent tbContent);
 
     TaotaoResult deleteContent(String ids);
+
+    void syncRedisCache(Long gategoryId);
 }

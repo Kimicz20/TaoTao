@@ -8,6 +8,7 @@
     <modules>
         <module>../taotao-rest</module>
         <module>../taotao-portal</module>
+        <module>../taotao-search</module>
     </modules>
     <packaging>pom</packaging>
 
