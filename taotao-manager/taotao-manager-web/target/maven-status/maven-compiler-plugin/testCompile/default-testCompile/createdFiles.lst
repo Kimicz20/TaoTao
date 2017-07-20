@@ -1,0 +1,6 @@
+com\taotao\controller\PageControllerTest.class
+customtag\User.class
+customtag\customTagTest.class
+customtag\UserBeanDefinitionParser.class
+customtag\MyNamespaceHandler.class
+com\taotao\controller\FtpfileTest.class
