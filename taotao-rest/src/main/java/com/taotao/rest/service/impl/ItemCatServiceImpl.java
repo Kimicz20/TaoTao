@@ -10,6 +10,7 @@ import com.taotao.rest.pojo.ItemCatsResult;
 import com.taotao.rest.service.ItemCatService;
 import com.taotao.utils.JsonUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
@@ -27,6 +28,7 @@ public class ItemCatServiceImpl implements ItemCatService {
     private TbItemCatMapper itemCatMapper;
 
     @Autowired
+    @Qualifier("jedisClientCluster")
     private JedisClient jedis;
 
     @Value("${REDIS_CAT_KEY}")

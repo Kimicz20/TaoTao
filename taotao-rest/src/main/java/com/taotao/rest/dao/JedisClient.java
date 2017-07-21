@@ -1,8 +1,5 @@
 package com.taotao.rest.dao;
 
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
-
 /**
  * Created by geek on 2017/6/30.
  */

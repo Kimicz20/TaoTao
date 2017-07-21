@@ -2,12 +2,13 @@ package com.taotao.rest.dao.impl;
 
 import com.taotao.rest.dao.JedisClient;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.ComponentScan;
+import org.springframework.stereotype.Repository;
 import redis.clients.jedis.JedisCluster;
 
 /**
  * Created by geek on 2017/6/30.
  */
+@Repository
 public class JedisClientCluster implements JedisClient {
 
     @Autowired

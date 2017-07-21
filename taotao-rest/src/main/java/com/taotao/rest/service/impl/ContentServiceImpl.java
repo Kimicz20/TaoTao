@@ -9,6 +9,7 @@ import com.taotao.rest.dao.JedisClient;
 import com.taotao.rest.service.ContentService;
 import com.taotao.utils.JsonUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
@@ -25,6 +26,7 @@ public class ContentServiceImpl implements ContentService {
     private TbContentMapper contentMapper;
 
     @Autowired
+    @Qualifier("jedisClientCluster")
     private JedisClient jedis;
 
     @Value("${REDIS_AD_KEY}")

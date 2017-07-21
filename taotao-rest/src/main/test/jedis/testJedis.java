@@ -36,7 +36,7 @@ public class testJedis {
         poolConfig.setMaxIdle(5);//空闲数
 
         //2.创建连接
-        JedisPool pool = new JedisPool("192.168.56.133", 6379);
+        JedisPool pool = new JedisPool("192.168.0.104", 6379);
         Jedis jedis = null;
         try {
             jedis = pool.getResource();
@@ -65,7 +65,7 @@ public class testJedis {
 
         //集群结点
         Set<HostAndPort> jedisClusterNode = new HashSet<HostAndPort>();
-        String IP = "192.168.0.106";
+        String IP = "192.168.0.104";
         jedisClusterNode.add(new HostAndPort(IP, 7001));
         jedisClusterNode.add(new HostAndPort(IP, 7002));
         jedisClusterNode.add(new HostAndPort(IP, 7003));
@@ -75,21 +75,20 @@ public class testJedis {
         JedisCluster jc = new JedisCluster(jedisClusterNode, config);
 
         JedisCluster jcd = new JedisCluster(jedisClusterNode);
-        jcd.set("name", "zhangsan");
-        String value = jcd.get("name");
+        String value = jcd.hget("REDIS_AD_KEY","89");
         System.out.println(value);
     }
 
     @Test
     public void testSpingJedisCluster(){
         ApplicationContext context = new ClassPathXmlApplicationContext("classpath:spring/applicationContext-jedis.xml");
-//        JedisCluster jedisCluster = context.getBean(JedisCluster.class);
-//        jedisCluster.set("pwd","11");
-//        System.out.println(jedisCluster.get("pwd"));
-        JedisPool jedisPool = context.getBean(JedisPool.class);
-        Jedis jedis = jedisPool.getResource();
-        jedis.set("ppp", "bar");
-        String name = jedis.get("ppp");
-        System.out.println(name);
+        JedisCluster jedisCluster = context.getBean(JedisCluster.class);
+        String value = jedisCluster.get("REDIS_CAT_KEY");
+        System.out.println(value);
+//        JedisPool jedisPool = context.getBean(JedisPool.class);
+//        Jedis jedis = jedisPool.getResource();
+//        jedis.set("ppp", "bar");
+//        String name = jedis.get("ppp");
+//        System.out.println(name);
     }
 }
