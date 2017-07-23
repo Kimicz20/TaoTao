@@ -45,7 +45,11 @@ public class Item {
     }
 
     public String getImage() {
-        return image;
+        if(image != null){
+            String[] images = image.split(",");
+            return images[0];
+        }
+        return null;
     }
 
     public void setImage(String image) {

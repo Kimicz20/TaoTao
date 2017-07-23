@@ -1,8 +1,6 @@
 package jedis;
 
 import org.junit.Test;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
 import redis.clients.jedis.*;
 
 import java.util.HashSet;
@@ -81,14 +79,23 @@ public class testJedis {
 
     @Test
     public void testSpingJedisCluster(){
-        ApplicationContext context = new ClassPathXmlApplicationContext("classpath:spring/applicationContext-jedis.xml");
-        JedisCluster jedisCluster = context.getBean(JedisCluster.class);
-        String value = jedisCluster.get("REDIS_CAT_KEY");
-        System.out.println(value);
+//        ApplicationContext context = new ClassPathXmlApplicationContext("classpath:spring/applicationContext-jedis.xml");
+//        JedisCluster jedisCluster = context.getBean(JedisCluster.class);
+//        String value = jedisCluster.hget("REDIS_CAT_KEY","0");
+//        System.out.println(value);
 //        JedisPool jedisPool = context.getBean(JedisPool.class);
 //        Jedis jedis = jedisPool.getResource();
 //        jedis.set("ppp", "bar");
 //        String name = jedis.get("ppp");
 //        System.out.println(name);
+        int sum=0;
+        for(int i=0;i<10;i++){
+            sum+=i;
+            if(i%3==0){
+                break;
+            }
+        }
+        System.out.println(sum);
+
     }
 }
