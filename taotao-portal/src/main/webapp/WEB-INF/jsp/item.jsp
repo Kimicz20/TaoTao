@@ -50,9 +50,9 @@
 			<h1>${item.title }</h1>
 			<strong>${item.sellPoint}</strong>
 		</div><!--name end-->
-		<script type='text/javascript'>var warestatus = 1; var eleSkuIdKey =[];</script>
+		<%--<script type='text/javascript'>var warestatus = 1; var eleSkuIdKey =[];</script>--%>
 		<div class="clearfix" clstag="shangpin|keycount|product|share">
-<script type="text/javascript">pageConfig.product.marketPrice='';</script>
+<%--<script type="text/javascript">pageConfig.product.marketPrice='';</script>--%>
 <ul id="summary">
 	<li id="summary-price">
 		<div class="dt">淘&nbsp;淘&nbsp;价：</div>

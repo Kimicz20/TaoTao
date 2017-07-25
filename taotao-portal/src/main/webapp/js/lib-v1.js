@@ -1564,7 +1564,9 @@ var $o = function() {
 //    return n.bind_input(), n
 }();
 pageConfig.FN_InitSidebar = function() {
-    $("#toppanel").length || $(document.body).prepend('<div class="w ld" id="toppanel"></div>'), $("#toppanel").append('<div id="sidepanel" class="hide"></div>');
+    $("#toppanel").length || $(document.body).prepend('<div class="w ld" id="toppanel"></div>');
+        // ,
+        // $("#toppanel").append('<div id="sidepanel" class="hide"></div>');
     var a = $("#sidepanel");
     this.scroll = function() {
         var b = this;
@@ -1580,9 +1582,9 @@ pageConfig.FN_InitSidebar = function() {
     }, this.addCss = function(b) {
         a.css(b)
     }, this.addItem = function(b) {
-        a.append(b)
+        // a.append(b)
     }, this.setTop = function() {
-        this.addItem("<a href='#' class='gotop' title='\u4f7f\u7528\u5feb\u6377\u952eT\u4e5f\u53ef\u8fd4\u56de\u9876\u90e8\u54e6\uff01'><b></b>\u8fd4\u56de\u9876\u90e8</a>")
+        // this.addItem("<a href='#' class='gotop' title='\u4f7f\u7528\u5feb\u6377\u952eT\u4e5f\u53ef\u8fd4\u56de\u9876\u90e8\u54e6\uff01'><b></b>\u8fd4\u56de\u9876\u90e8</a>")
     }
 }, pageConfig.FN_InitContrast = function(a, b, c) {
     var a = a || "_contrast", c = c || "list", b = b || "http://misc.360buyimg.com/contrast/js/contrast.js?ver=" + +new Date, d = readCookie(a + "_status");

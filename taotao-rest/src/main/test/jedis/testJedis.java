@@ -60,20 +60,17 @@ public class testJedis {
         config.setMaxTotal(30);
         // 最大连接空闲数
         config.setMaxIdle(2);
-
         //集群结点
         Set<HostAndPort> jedisClusterNode = new HashSet<HostAndPort>();
-        String IP = "192.168.0.104";
+        String IP = "192.168.0.106";
         jedisClusterNode.add(new HostAndPort(IP, 7001));
         jedisClusterNode.add(new HostAndPort(IP, 7002));
         jedisClusterNode.add(new HostAndPort(IP, 7003));
         jedisClusterNode.add(new HostAndPort(IP, 7004));
         jedisClusterNode.add(new HostAndPort(IP, 7005));
         jedisClusterNode.add(new HostAndPort(IP, 7006));
-        JedisCluster jc = new JedisCluster(jedisClusterNode, config);
-
-        JedisCluster jcd = new JedisCluster(jedisClusterNode);
-        String value = jcd.hget("REDIS_AD_KEY","89");
+        JedisCluster jcd = new JedisCluster(jedisClusterNode,5000,10000,config);
+        String value = jcd.get("REDIS_ITEM_BASE_KEY:150081239962990:base");
         System.out.println(value);
     }
 

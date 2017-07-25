@@ -2303,7 +2303,7 @@ SEARCH.init = function(page, total_page, result_count, sort, scroll, shop_id, ci
     pageConfig.isInitContrast = false;
     pageConfig.FN_InitContrast();
     var sidePanle = new pageConfig.FN_InitSidebar();
-    sidePanle.addItem(survey_html);
+    // sidePanle.addItem(survey_html);
     sidePanle.setTop();
     sidePanle.scroll();
     $("#sidepanel").find("a.gotop").attr("href", "javascript:void(0)").click(function() {

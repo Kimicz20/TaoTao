@@ -4,7 +4,6 @@ import com.taotao.pojo.SearchResult;
 import com.taotao.pojo.TaotaoResult;
 import com.taotao.portal.service.SearchService;
 import com.taotao.utils.HttpClientUtil;
-import com.taotao.utils.JsonUtils;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
@@ -29,9 +28,9 @@ public class SearchServiceImpl implements SearchService {
 
         try {
             String json = HttpClientUtil.doGet(SEARCH_BASE_URL, param);
-            TaotaoResult taotaoResult = JsonUtils.jsonToPojo(json, TaotaoResult.class);
+            TaotaoResult taotaoResult = TaotaoResult.formatToPojo(json, SearchResult.class);
             if (taotaoResult.getStatus() == 200){
-                return JsonUtils.jsonToPojo((String)taotaoResult.getData(),SearchResult.class);
+                return (SearchResult) taotaoResult.getData();
             }
         }catch (Exception e){
             e.getStackTrace();

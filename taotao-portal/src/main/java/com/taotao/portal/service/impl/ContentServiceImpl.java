@@ -18,8 +18,8 @@ import java.util.List;
 @Service
 public class ContentServiceImpl implements ContentService {
 
-    @Value("${CONTENT_BASE_URL}")
-    private String CONTENT_BASE_URL;
+    @Value("${REST_BASE_URL}")
+    private String REST_BASE_URL;
 
     @Value("${CONTENT_PATH_URL}")
     private String CONTENT_PATH_URL;
@@ -28,7 +28,7 @@ public class ContentServiceImpl implements ContentService {
     public String getContentList() {
 
         //1.创建一个HTTPGet请求
-        String resultStr = HttpClientUtil.doGet(CONTENT_BASE_URL + CONTENT_PATH_URL );
+        String resultStr = HttpClientUtil.doGet(REST_BASE_URL + CONTENT_PATH_URL );
         //2.格式转换
         TaotaoResult result = TaotaoResult.formatToList(resultStr, TbContent.class);
 

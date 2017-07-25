@@ -1,14 +1,15 @@
 package com.taotao.search.controller;
 
 import com.alibaba.druid.util.StringUtils;
-import com.taotao.pojo.TaotaoResult;
 import com.taotao.pojo.SearchResult;
+import com.taotao.pojo.TaotaoResult;
 import com.taotao.search.service.ItemSearchService;
 import com.taotao.utils.ExceptionUtil;
-import com.taotao.utils.JsonUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
  * Created by geek on 2017/7/20.
@@ -39,7 +40,7 @@ public class SearchController {
             e.printStackTrace();
             return TaotaoResult.build(500, ExceptionUtil.getStackTrace(e));
         }
-        return TaotaoResult.ok(JsonUtils.objectToJson(searchResult));
+        return TaotaoResult.ok(searchResult);
     }
 
 }

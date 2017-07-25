@@ -9,8 +9,10 @@ import com.taotao.mapper.TbItemParamMapper;
 import com.taotao.pojo.*;
 import com.taotao.pojo.TbItemDescExample.Criteria;
 import com.taotao.service.ItemService;
+import com.taotao.utils.HttpClientUtil;
 import com.taotao.utils.IDUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
@@ -33,6 +35,9 @@ public class ItemServiceImpl implements ItemService {
 
     @Autowired
     TbItemParamItemMapper tbItemParamItemMapper;
+
+    @Value("${SOLR_BASE_URL}")
+    private String SOLR_BASE_URL;
 
     @Override
     public TbItem ItemQueryById(long id) {
@@ -78,6 +83,12 @@ public class ItemServiceImpl implements ItemService {
         result = insertTbItemParamItem(id,itemParams);
         if (result.getStatus() != 200){
             throw new Exception();
+        }
+
+        //同步到solr索引中
+        String r = HttpClientUtil.doGet(SOLR_BASE_URL + id);
+        if(r == null){
+            return TaotaoResult.build(400,"同步失败");
         }
         return TaotaoResult.ok();
     }

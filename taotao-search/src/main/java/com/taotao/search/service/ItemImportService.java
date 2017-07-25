@@ -8,4 +8,5 @@ import com.taotao.pojo.TaotaoResult;
 public interface ItemImportService {
 
     TaotaoResult importAllToSolrIndex() throws Exception;
+    TaotaoResult importItemToSolrIndex(Long itemId) throws Exception;
 }

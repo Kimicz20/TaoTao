@@ -43,7 +43,7 @@
 
     <!--redis集群 -->
     <bean id="jedisCluster" class="redis.clients.jedis.JedisCluster">
-        <constructor-arg name="nodes">
+        <constructor-arg name="jedisClusterNode">
             <set>
                 <bean class="redis.clients.jedis.HostAndPort">
                     <constructor-arg name="host" value="${REDIS_SERVER_IP}"/>
@@ -72,6 +72,9 @@
             </set>
         </constructor-arg>
         <constructor-arg name="poolConfig" ref="jedisPoolConfig"/>
+        <constructor-arg name="timeout" value="5000"/>
+        <!--最大跳数，默认为5-->
+        <constructor-arg name="maxRedirections" value="100"/>
     </bean>
 
 

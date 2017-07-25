@@ -45,9 +45,14 @@ public class Item {
     }
 
     public String getImage() {
-        if(image != null){
+        return image;
+    }
+
+    public String[] getImages() {
+        String image = getImage();
+        if (image != null) {
             String[] images = image.split(",");
-            return images[0];
+            return images;
         }
         return null;
     }
