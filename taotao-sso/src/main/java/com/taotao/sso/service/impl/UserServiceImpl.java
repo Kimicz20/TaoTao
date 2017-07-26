@@ -7,6 +7,7 @@ import com.taotao.pojo.TbUserExample;
 import com.taotao.pojo.TbUserExample.Criteria;
 import com.taotao.sso.dao.JedisClient;
 import com.taotao.sso.service.UserService;
+import com.taotao.utils.CookieUtils;
 import com.taotao.utils.JsonUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +16,8 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.util.DigestUtils;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.io.UnsupportedEncodingException;
 import java.util.Date;
 import java.util.List;
@@ -38,6 +41,10 @@ public class UserServiceImpl implements UserService {
 
     @Value("${SSO_TIME_EXPIRE}")
     private int SSO_TIME_EXPIRE;
+
+    @Value("${SSO_COOKIE}")
+    private String SSO_COOKIE;
+
     /**
      * check different type of param is success
      * @param param to check data
@@ -83,7 +90,9 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public TaotaoResult loginUser(String username, String password) {
+    public TaotaoResult loginUser(String username, String password,
+                                  HttpServletRequest request,
+                                  HttpServletResponse response) {
 
         //1. create query criteria
         TbUserExample userExample = new TbUserExample();
@@ -111,6 +120,9 @@ public class UserServiceImpl implements UserService {
 
         jedisClient.set(REDIS_SSO_USER_KEY+":"+token, JsonUtils.objectToJson(user));
         jedisClient.expire(REDIS_SSO_USER_KEY+":"+token,SSO_TIME_EXPIRE);
+
+        //put token to cookie
+        CookieUtils.setCookie(request,response,SSO_COOKIE, token);
 
         return TaotaoResult.ok(token);
     }

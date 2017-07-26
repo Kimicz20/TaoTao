@@ -1,13 +1,14 @@
 package com.taotao.portal.controller;
 
-import com.taotao.pojo.Item;
 import com.taotao.portal.pojo.ItemInfo;
 import com.taotao.portal.service.ItemService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
  * Created by geek on 2017/7/24.
@@ -26,17 +27,17 @@ public class ItemController {
         return "item";
     }
 
-    @RequestMapping("/desc/{id}")
-    public String itemDesc(@PathVariable("id") String id,Model model){
-        Item item = null;
-        model.addAttribute("item",item);
-        return "item";
+    @RequestMapping(value = "/desc/{id}",produces = MediaType.TEXT_HTML_VALUE+";charset=utf-8")
+    @ResponseBody
+    public String itemDesc(@PathVariable("id") Long id){
+        String desc = itemService.getItemDescById(id);
+        return desc;
     }
 
-    @RequestMapping("/param/{id}")
-    public String itemParam(@PathVariable("id") String id,Model model){
-        Item item = null;
-        model.addAttribute("item",item);
-        return "item";
+    @RequestMapping(value = "/param/{id}",produces = MediaType.TEXT_HTML_VALUE+";charset=utf-8")
+    @ResponseBody
+        public String itemParam(@PathVariable("id") Long id){
+        String param = itemService.getItemParamById(id);
+        return param;
     }
 }

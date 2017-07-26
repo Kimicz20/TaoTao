@@ -27,12 +27,14 @@ public class ItemController {
     @RequestMapping("/desc/{itemId}")
     @ResponseBody
     public TaotaoResult queryItemDescById(@PathVariable Long itemId){
-        return itemService.queryItemInfo(itemId);
+
+        return itemService.queryItemDesc(itemId);
     }
 
     @RequestMapping("/param/{itemId}")
     @ResponseBody
     public TaotaoResult queryItemParamById(@PathVariable Long itemId){
+
         return itemService.queryItemParam(itemId);
     }
 }

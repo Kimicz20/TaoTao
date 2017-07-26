@@ -21,4 +21,11 @@
           p:suffix=".jsp"
           p:prefix="/WEB-INF/jsp/"/>
 
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/item/**" />
+            <bean class="com.taotao.portal.interceptor.LoginInterceptor"/>
+        </mvc:interceptor>
+    </mvc:interceptors>
+
 </beans>

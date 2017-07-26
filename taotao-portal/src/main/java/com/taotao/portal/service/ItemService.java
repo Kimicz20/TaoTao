@@ -8,4 +8,8 @@ import com.taotao.portal.pojo.ItemInfo;
 public interface ItemService {
 
     ItemInfo getItemById(Long id);
+
+    String getItemDescById(Long id);
+
+    String getItemParamById(Long id);
 }
